@@ -31,5 +31,8 @@ jobs:
           export SENTINEL_TOKEN=$(openssl rand -hex 32)
           docker run -d --rm --name sentinel-check -p 127.0.0.1:18080:8000 -e SENTINEL_TOKEN sentinel-check
           trap 'docker stop sentinel-check >/dev/null' EXIT
-          curl --retry 10 --retry-delay 1 --retry-connrefused --fail http://127.0.0.1:18080/healthz
+          if ! curl --silent --show-error --fail --retry 20 --retry-delay 1 --retry-all-errors --max-time 3 --retry-max-time 30 http://127.0.0.1:18080/healthz; then
+            docker logs sentinel-check --tail 30
+            exit 1
+          fi
           test "$(curl --silent --output /dev/null --write-out '%{http_code}' -X POST http://127.0.0.1:18080/mcp)" = 401
