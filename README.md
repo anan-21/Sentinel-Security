@@ -21,6 +21,8 @@ sentinel-security install workbuddy
 
 安装时 OpenClaw 会立即检查本地渠道配置。WorkBuddy 使用当前会话的原生连接器查询，也可在安装时指定自己的 `--workbuddy-profile` 读取绑定标志。DSH 的安装进程没有正在调用它的 Agent 身份，首次激活 Skill 时由该 Agent 提供工具清单。安装器的“等待宿主清单”是一个需要继续的步骤。宿主只加载了 Skill 而不允许 MCP 或安全的本地 CLI 调用时，报告检测器不可用。
 
+WorkBuddy 首次激活还会运行本机邮箱初始化：识别「163邮箱助手」已有账户并复用；连接状态未知时先查询宿主，确认没有邮箱且用户选择网易后，启动本机授权页面。授权码由用户亲自填写，重复初始化不会反复弹窗。这个流程需要 WorkBuddy 允许本地脚本执行；缺少邮件助手时由原生技能市场安装，未知助手版本先审核。[具体状态与接入方法](integrations/workbuddy/README.md)。
+
 | 宿主 | 可用入口 | 发现和防护范围 |
 |---|---|---|
 | [WorkBuddy](integrations/workbuddy/README.md) | 本地 Skill、stdio MCP、远程连接器包 | 会话查询已安装/授权状态，按选定档案读取已绑定记录 |

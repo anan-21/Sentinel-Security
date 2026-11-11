@@ -19,7 +19,7 @@ class Guard:
             return await self.app(scope, receive, send)
         start = time.monotonic()
         if scope["path"] == "/healthz":
-            return await JSONResponse({"status": "ok", "version": "0.2.0"})(
+            return await JSONResponse({"status": "ok", "version": "0.2.1"})(
                 scope, receive, send
             )
         headers = dict(scope["headers"])

@@ -123,7 +123,7 @@ def sentinel_scan_prompt(text: Text) -> Report:
 def sentinel_get_status() -> dict:
     """Service capabilities, not Muse connector discovery or monitoring status."""
     return {
-        "version": "0.2.0",
+        "version": "0.2.1",
         "healthy": True,
         "modules": [
             "message",

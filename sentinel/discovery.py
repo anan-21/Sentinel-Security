@@ -8,7 +8,17 @@ Host = Literal["workbuddy", "openclaw", "dsh", "muse", "generic"]
 Name = Annotated[str, Field(pattern=r"^[a-zA-Z0-9_.-]{1,160}$")]
 # Canonical service IDs only. Unknown aliases can be supplied separately by the host.
 SERVICES = {
-    "email": ("gmail", "outlook", "imap", "qqmail", "mail", "email", "protonmail"),
+    "email": (
+        "gmail",
+        "outlook",
+        "imap",
+        "qqmail",
+        "mail",
+        "email",
+        "protonmail",
+        "netease",
+        "mail163",
+    ),
     "chat": (
         "whatsapp",
         "telegram",
@@ -81,6 +91,8 @@ def discover(host: Host, observations: list[Observation]) -> Inventory:
             ignored += 1
             continue
         provider = provider.lower()
+        if provider == "mail163":
+            provider = "netease"
         entry = groups.setdefault(
             provider,
             {

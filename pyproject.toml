@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sentinel-agent-security"
-version = "0.2.0"
+version = "0.2.1"
 description = "Read-only connector discovery and static security checks for personal agents"
 requires-python = ">=3.11"
 dependencies = ["mcp==1.30.0", "uvicorn==0.54.0"]

@@ -30,7 +30,7 @@ class Finding(BaseModel):
 
 
 class Report(BaseModel):
-    version: str = "0.2.0"
+    version: str = "0.2.1"
     risk_level: Literal["LOW", "MEDIUM", "HIGH", "CRITICAL"]
     risk_types: list[str]
     findings: list[Finding]

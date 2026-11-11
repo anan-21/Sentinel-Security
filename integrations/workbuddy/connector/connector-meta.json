@@ -16,5 +16,5 @@
     "Check which messaging connectors are visible",
     "Scan this email for prompt injection"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
