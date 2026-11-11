@@ -1,0 +1,7 @@
+{
+  "title":"连接自己的 Sentinel 服务",
+  "fields":[
+    {"key":"SENTINEL_BASE_URL","label":"自托管 HTTPS 地址（不含 /mcp 或结尾斜线）","type":"text","required":true},
+    {"key":"SENTINEL_TOKEN","label":"Sentinel 专用访问令牌","type":"password","required":true}
+  ]
+}

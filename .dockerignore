@@ -1,5 +1,9 @@
-.venv
-.git
-.env
-__pycache__
-.pytest_cache
+# Send only the HTTP service's runtime inputs to the Docker builder.
+**
+!requirements.lock
+!security/
+!security/*.py
+!server/
+!server/*.py
+!sentinel/
+!sentinel/*.py

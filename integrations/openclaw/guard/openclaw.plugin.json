@@ -1,0 +1,28 @@
+{
+  "id": "sentinel-readonly-guard",
+  "name": "Sentinel read-only tool guard",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "agentIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allowedTools": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "scannerCommand": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

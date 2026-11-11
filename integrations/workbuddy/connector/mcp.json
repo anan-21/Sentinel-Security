@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sentinel-security":{
+      "type":"streamableHttp","url":"${SENTINEL_BASE_URL}/mcp",
+      "headers":{"Authorization":"Bearer ${SENTINEL_TOKEN}"},"timeout":30000
+    }
+  }
+}

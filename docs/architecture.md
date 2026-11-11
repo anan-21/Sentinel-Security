@@ -1,15 +1,10 @@
-# 架构与调研（2026-11-10）
-Muse 授权连接器 → Muse 最小化内容 → HTTPS/Bearer → 官方 MCP SDK → 无网络静态检测 → 结构化证据 → Muse 原生通知。
+# 组件与数据流
 
-官方安全文章明确 VM 支持自定义技能与 crons；这纠正早期调研中缺乏证据的部分，但没有提供所有后台 API 的调用契约。官方帮助明确允许请求 Custom Connector、邮件搜索、部分连接器主动事件。没有据此证明 Gmail 后台读取、WhatsApp 全量消息、用户自定义 SKILL.md 永久安装或全工具枚举。
+1. 宿主提供当前用户与作用域内的连接或工具元数据。OpenClaw 另提供本地渠道枚举；WorkBuddy 可提供选定档案的绑定记录；DSH 可在本进程的工具注册表取作用域清单。
+2. sentinel/discovery.py 对标识做分类，返回来源、操作线索、当前已知状态、缺口和建议检查项。CLI 可选保留按宿主与配置隔离的配置历史。
+3. 宿主根据原有授权读取用户选定的内容。对文本、网页或 URL 的扫描通过 MCP、CLI 或 OpenClaw 的原生工具调用同一组规则。
+4. security/injection.py 在有界输入上折叠全角字符、移除零宽格式符，并单层解码 HTML 实体和显式 base64；保存原始字符位置。规则输出与邮件证据均为不可信数据。
+5. security/policy.py 处理宿主提供的动作来源与原始任务范围。OpenClaw 和 DSH 的可选执行钩子在宿主侧使用明确的允许工具名；远程 MCP 不控制其他连接器。
+6. 实际查询、定时、用户通知和停用由宿主完成。安装成功、健康检查通过、工具可见和后台成功送达是四种独立结果。
 
-来源：
-- https://muse.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse
-- https://platform.muse.ai/docs
-- https://platform.muse.ai/terms
-- https://www.meta.com/help/superintelligence/1687253048996149/
-- https://ai.meta.com/muse/ （本轮页面未返回可读正文）
-
-内部 Sentinel 是 Meta 的执行权限控制层，本项目只是外部风险建议。正式目录上架另需遵循提交审核；个人 Custom Connector 的帮助文档注明不由 Meta 审核。
-
-复用官方 MCP Python SDK 1.30.0；不自造协议。LLM Guard 模型依赖较重，首版不纳入；无可靠情报数据源，绝不声称已知恶意命中。
+接口、安装方式和能力表见 [README](../README.md)，源码及平台资料见[调研记录](research.md)。

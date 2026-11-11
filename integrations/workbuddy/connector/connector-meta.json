@@ -1,0 +1,20 @@
+{
+  "name": "Sentinel Security",
+  "source": "sentinel-security",
+  "type": "mcp",
+  "auth_mode": "token",
+  "description": "检查已授权的通讯内容和可疑工具调用。",
+  "minWorkbuddyVersion": "4.24.0",
+  "name_en": "Sentinel Security",
+  "description_zh": "检查可见通讯连接、钓鱼内容与提示词注入，并在敏感工具调用前提示风险。",
+  "description_en": "Inspect connected communication tools, suspicious content and sensitive agent actions.",
+  "examples_zh": [
+    "检查我连接了哪些邮箱和通讯渠道",
+    "检测这段网页文本里的提示词注入"
+  ],
+  "examples_en": [
+    "Check which messaging connectors are visible",
+    "Scan this email for prompt injection"
+  ],
+  "version": "0.2.0"
+}
